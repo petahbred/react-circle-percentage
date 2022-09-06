@@ -1,23 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
+import PercentageCircle from './lib/components/PercentageCircle';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <PercentageCircle percentage={90} textColor='white'></PercentageCircle>
+      <PercentageCircle percentage={75} textColor='white'></PercentageCircle>
+      <PercentageCircle percentage={65} textColor='white'></PercentageCircle>
+      <PercentageCircle percentage={30} textColor='white'></PercentageCircle>
     </div>
   );
 }
