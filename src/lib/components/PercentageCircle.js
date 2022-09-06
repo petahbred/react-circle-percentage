@@ -1,7 +1,7 @@
 import Canvas from './Canvas';
 
 const PercentageCircle = ({ percentage, ...rest }) => {
-  const { textColor = 'black', lineWidth = 2, width = 34, height = 34 } = rest;
+  const { textColor = 'black', lineWidth = 2, width = 60, height = 60 } = rest;
 
   function getColor() {
     if (percentage > 70) {
@@ -33,9 +33,25 @@ const PercentageCircle = ({ percentage, ...rest }) => {
     context.translate(-0.5, -0.5);
   }
 
+  const wrapperStyles = {
+    position: 'relative',
+    display: 'flex',
+    'align-items': 'center',
+    'justify-content': 'center',
+    'font-size': '12px',
+    'font-weight': 'bold',
+    width: `${width}px`,
+    height: `${height}px`
+  };
+
+  const textStyles = {
+    position: 'absolute',
+    color: textColor,
+  };
+
   return (
-    <div className='percentage-circle'>
-      <span>{percentage}</span>
+    <div style={wrapperStyles}>
+      <span style={textStyles}>{percentage}</span>
       <Canvas
         draw={draw}
         maxFrames={percentage}
