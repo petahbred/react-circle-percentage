@@ -1,28 +1,33 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
+import useCanvas, { resizeCanvas } from '../hooks/useCanvas';
+
+const _predraw = (context, canvas) => {
+  context.save();
+  resizeCanvas(context, canvas);
+};
+
+const _postdraw = (context) => {
+  context.restore();
+};
 
 const Canvas = (props) => {
-  const canvasRef = useRef(null);
+  const {
+    draw,
+    drawOnce = () => null,
+    maxFrames = -1,
+    predraw = _predraw,
+    postdraw = _postdraw,
+    ...rest
+  } = props;
 
-  const { draw, ...rest } = props;
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    const context = canvas.getContext('2d');
-    let frameCount = 1;
-    // let animationFrameId;
-
-    const render = () => {
-      // frameCount++;
-      draw(context, frameCount);
-      // animationFrameId = window.requestAnimationFrame(render);
-    };
-
-    render();
-
-    return () => {
-      // window.cancelAnimationFrame(animationFrameId);
-    };
-  }, [draw]);
+  const canvasRef = useCanvas(draw, {
+    predraw(context, canvas) {
+      predraw(context, canvas);
+      drawOnce(context);
+    },
+    postdraw,
+    maxFrames,
+  });
 
   return <canvas ref={canvasRef} {...rest} />;
 };
