@@ -36,10 +36,10 @@ const PercentageCircle = ({ percentage, ...rest }) => {
   const wrapperStyles = {
     position: 'relative',
     display: 'flex',
-    'align-items': 'center',
-    'justify-content': 'center',
-    'font-size': '12px',
-    'font-weight': 'bold',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontSize: '12px',
+    fontWeight: 'bold',
     width: `${width}px`,
     height: `${height}px`
   };
