@@ -1,3 +1,4 @@
+import React from 'react';
 import Canvas from './Canvas';
 
 const PercentageCircle = ({ percentage, ...rest }) => {

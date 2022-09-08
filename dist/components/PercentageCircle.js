@@ -5,6 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+var _react = _interopRequireDefault(require("react"));
+
 var _Canvas = _interopRequireDefault(require("./Canvas"));
 
 const _excluded = ["percentage"];
@@ -69,11 +71,11 @@ const PercentageCircle = _ref => {
     position: 'absolute',
     color: textColor
   };
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/_react.default.createElement("div", {
     style: wrapperStyles
-  }, /*#__PURE__*/React.createElement("span", {
+  }, /*#__PURE__*/_react.default.createElement("span", {
     style: textStyles
-  }, percentage), /*#__PURE__*/React.createElement(_Canvas.default, {
+  }, percentage), /*#__PURE__*/_react.default.createElement(_Canvas.default, {
     draw: draw,
     maxFrames: percentage,
     width: width,

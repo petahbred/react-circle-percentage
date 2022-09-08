@@ -29,9 +29,11 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
+  "peerDependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
     "react-scripts": "5.0.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
