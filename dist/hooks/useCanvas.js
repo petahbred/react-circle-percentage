@@ -8,17 +8,17 @@ exports.resizeCanvas = resizeCanvas;
 
 var _react = require("react");
 
-const useCanvas = function useCanvas(draw) {
-  let options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  const canvasRef = (0, _react.useRef)(null);
-  (0, _react.useEffect)(() => {
-    const canvas = canvasRef.current;
-    const context = canvas.getContext('2d');
-    let frameCount = 0;
-    let animationFrameId;
+var useCanvas = function useCanvas(draw) {
+  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var canvasRef = (0, _react.useRef)(null);
+  (0, _react.useEffect)(function () {
+    var canvas = canvasRef.current;
+    var context = canvas.getContext('2d');
+    var frameCount = 0;
+    var animationFrameId;
     options.predraw(context, canvas);
 
-    const render = () => {
+    var render = function render() {
       if (frameCount >= options.maxFrames) {
         window.cancelAnimationFrame(animationFrameId);
         return;
@@ -31,7 +31,7 @@ const useCanvas = function useCanvas(draw) {
 
     render();
     options.postdraw(context);
-    return () => {
+    return function () {
       window.cancelAnimationFrame(animationFrameId);
     };
   }, [draw]);
@@ -39,15 +39,14 @@ const useCanvas = function useCanvas(draw) {
 };
 
 function resizeCanvas(context, canvas) {
-  const {
-    width,
-    height
-  } = canvas.getBoundingClientRect();
+  var _canvas$getBoundingCl = canvas.getBoundingClientRect(),
+      width = _canvas$getBoundingCl.width,
+      height = _canvas$getBoundingCl.height;
 
   if (canvas.width !== width || canvas.height !== height) {
-    const {
-      devicePixelRatio: ratio = 1
-    } = window;
+    var _window = window,
+        _window$devicePixelRa = _window.devicePixelRatio,
+        ratio = _window$devicePixelRa === void 0 ? 1 : _window$devicePixelRa;
     canvas.width = width * ratio;
     canvas.height = height * ratio;
     context.scale(ratio, ratio);
